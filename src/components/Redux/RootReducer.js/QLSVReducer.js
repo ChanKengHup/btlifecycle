@@ -38,7 +38,6 @@ var mangSVPro = []
  student.mangSV.map(item => {
      mangSVPro.push(item)
  })
- console.log(mangSVPro);
 
 export const quanLySVReducer = (state = student, action) => {
     switch(action.type) {
@@ -88,10 +87,7 @@ export const quanLySVReducer = (state = student, action) => {
         case 'SEARCH_SV': {
             
             let mangTimKiem = [...state.mangSV]
-            let mangSVNew = []
-            mangTimKiem.map(item => {
-                mangSVNew.push(item)
-            })
+           
             if(mangTimKiem.length > 0) {
                 var svFind = mangTimKiem.filter(sv => {
                     let svLower = sv.hoTen.toLowerCase()
@@ -106,7 +102,6 @@ export const quanLySVReducer = (state = student, action) => {
                     state.mangSV = mangTimKiem
             }
             if(svFind.length == 0) {
-                console.log("ok");
                 state.mangSV = mangSVPro
 
             }
