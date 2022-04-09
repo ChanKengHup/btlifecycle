@@ -35,24 +35,21 @@ let student = {
     tenSV: ''
 }
 var mangSVPro = []
-//  student.mangSV.map(item => {
-//      mangSVPro.push(item)
-//  })
+ student.mangSV.map(item => {
+     mangSVPro.push(item)
+ })
  console.log(mangSVPro);
 
 export const quanLySVReducer = (state = student, action) => {
     switch(action.type) {
         case 'ADD__DATA': {
+           mangSVPro.push(action.sv)
             state.mangSV = [...state.mangSV, action.sv]
-            state.mangSV.map(item => {
-                
-                mangSVPro.push(item)
-            })
             return {...state}
         }
         case 'XOA_NGUOI_DUNG': {
            let mangNDXoa = [...state.mangSV]
-           
+          mangSVPro =  mangSVPro.filter(sv => sv.maSV !== action.maSV)
            state.mangSV = mangNDXoa.filter((nd) => {
                 return nd.maSV !== action.maSV
            })
@@ -109,6 +106,7 @@ export const quanLySVReducer = (state = student, action) => {
                     state.mangSV = mangTimKiem
             }
             if(svFind.length == 0) {
+                console.log("ok");
                 state.mangSV = mangSVPro
 
             }
